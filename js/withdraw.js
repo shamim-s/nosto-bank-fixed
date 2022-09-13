@@ -13,12 +13,17 @@ document.getElementById("btn-withdraw").addEventListener("click", function () {
 
   const newWithdrawAmount = getInputFieldValueById("withdraw-field");
   const previousWithdrawTotal = getTextElementValueById("withdraw-total");
-
-  const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
-
-  setTextElementValueById("withdraw-total", newWithdrawTotal);
-
   const previousBalanceTotal = getTextElementValueById("balance-total");
-  const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
-  setTextElementValueById("balance-total", newBalanceTotal);
+
+  if(newWithdrawAmount < 10){
+    alert('minimus withdraw amount is 10');
+  }else if(isNaN(newWithdrawAmount)){
+    alert('Please inter any number');
+  }else{
+    const newWithdrawTotal = previousWithdrawTotal + newWithdrawAmount;
+    setTextElementValueById("withdraw-total", newWithdrawTotal);
+
+    const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
+    setTextElementValueById("balance-total", newBalanceTotal);
+  }
 });
